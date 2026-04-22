@@ -25,7 +25,13 @@ def get_gee_dsm(save_dir, target_region, target_city, bbox):
 
     # 2. Preprocess save path and AOI
     save_path = os.path.join(save_dir, f'{target_city}.tif')
-    aoi = ee.Geometry.BBox(float(bbox[0]), float(bbox[1]), float(bbox[2]), float(bbox[3]))
+
+    bbox_s = float(bbox[1]) - 0.002
+    bbox_n = float(bbox[3]) + 0.002
+    bbox_w = float(bbox[0]) - 0.002
+    bbox_e = float(bbox[2]) + 0.002
+
+    aoi = ee.Geometry.BBox(bbox_w, bbox_s, bbox_e, bbox_n)
 
     # 3. Get DSM from GEE
     # [Case 1] If a target city is located in England
@@ -188,8 +194,7 @@ def save_dsm(save_dir, target_city, tif_path, arr_dsm):
         'driver': 'GTiff',
         'height': arr_dsm.shape[0],
         'width': arr_dsm.shape[1],
-        'dtype': arr_dsm.dtype,
-        'nodata': -9999.0
+        'dtype': arr_dsm.dtype
     })
 
     with rasterio.open(save_path, 'w', **out_metadata) as dsm:
