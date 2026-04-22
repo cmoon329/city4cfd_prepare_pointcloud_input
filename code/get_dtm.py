@@ -16,10 +16,10 @@ def download_dtm(save_path, bbox, api_key, dem_dataset):
     Returns:
 
     """
-    bbox_s = bbox[1]
-    bbox_n = bbox[3]
-    bbox_w = bbox[0]
-    bbox_e = bbox[2]
+    bbox_s = bbox[1] - 0.002
+    bbox_n = bbox[3] + 0.002
+    bbox_w = bbox[0] - 0.002
+    bbox_e = bbox[2] + 0.002
 
     url = f"https://portal.opentopography.org/API/globaldem?demtype={dem_dataset}&south={bbox_s}&north={bbox_n}&west={bbox_w}&east={bbox_e}&outputFormat=GTiff&API_Key={api_key}"
 
@@ -80,7 +80,7 @@ def reproject_to_utm(save_path, target_crs):
                     src_transform=src.transform,
                     dst_crs=dst_crs,
                     src_nodata=src.nodata,
-                    dst_nodata=-9999.0,
+                    dst_nodata=dst_nodata,
                     resampling=Resampling.bilinear,
                 )
                 reprojected_data_arr.append(dst_arr)
