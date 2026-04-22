@@ -16,10 +16,10 @@ def download_dtm(save_path, bbox, api_key, dem_dataset):
     Returns:
 
     """
-    bbox_s = bbox[1] - 0.002
-    bbox_n = bbox[3] + 0.002
-    bbox_w = bbox[0] - 0.002
-    bbox_e = bbox[2] + 0.002
+    bbox_s = bbox[1] - 0.005
+    bbox_n = bbox[3] + 0.005
+    bbox_w = bbox[0] - 0.005
+    bbox_e = bbox[2] + 0.005
 
     url = f"https://portal.opentopography.org/API/globaldem?demtype={dem_dataset}&south={bbox_s}&north={bbox_n}&west={bbox_w}&east={bbox_e}&outputFormat=GTiff&API_Key={api_key}"
 
