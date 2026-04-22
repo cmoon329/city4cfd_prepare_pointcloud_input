@@ -12,10 +12,6 @@ A Python pipeline that generates Digital Surface Model (DSMs) and converts them 
 │   ├── get_dtm.py
 │   ├── get_dsm.py
 │   └── convert_dsm_to_las.py
-├── output_example/
-│   ├── london/
-│   ├── seoul/
-│   └── madrid/
 └── README.md
 ```
 
