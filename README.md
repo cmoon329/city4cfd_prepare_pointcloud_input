@@ -53,5 +53,11 @@ A Python pipeline that generates Digital Surface Model (DSMs) and converts them 
 | `[city_name].las` / `.laz` | Point Cloud | - |
 
 
+### Limitations
+For the cities outside England/Netherlands:
+- Missing Heights: If a building footprint lacks height data, it is assigned a default height of 3.0m (assuming a single-story).
+- Level of Detail: LoD1
+
+
 ### Reference
 - https://github.com/slzhang-git/cenergy/blob/main/src/cenergy3/core.py
